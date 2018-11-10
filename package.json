@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build-ts":"tsc",
+    "postinstall": "npm run build-ts",
     "test": "jest --detectOpenHandles",
-    "start": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts"
+    "start": "npm run serve",
+    "serve":"node build/server/server/js"
   },
   "jest": {
     "verbose": true,
@@ -20,6 +23,9 @@
     "testMatch": [
       "**/__tests__/*.+(ts|tsx)"
     ]
+  },
+  "engines": {
+    "node":"8.11.4"
   },
   "keywords": [],
   "author": "",

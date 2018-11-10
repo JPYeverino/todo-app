@@ -1,3 +1,3 @@
 import * as mongoose from 'mongoose';
 
-let s = mongoose.connect('mongodb://localhost:27017/TodoApp');
+let s = mongoose.connect('process.ENV.MONGODB_URI || mongodb://localhost:27017/TodoApp');
