@@ -8,7 +8,7 @@
     "postinstall": "npm run build-ts",
     "test": "jest --detectOpenHandles",
     "start": "npm run serve",
-    "serve":"node build/server/server/js"
+    "serve":"node build/server/server.js"
   },
   "jest": {
     "verbose": true,
