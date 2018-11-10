@@ -1,9 +1,11 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import { ObjectID } from 'mongodb';
 
 import './db/mongoose';
 import { User } from './models/user';
 import { Todo } from './models/todo';
+
 
 const app: express.Application = express();
 
@@ -26,6 +28,23 @@ app.get('/todos', (req, res) => {
   }, e => {
     res.status(400).send(e);
   })
+});
+
+app.get('/todos/:id', (req, res) => {
+  let id = req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+  Todo.findById(id).then((todo) => {
+    if (!todo) {
+      return res.status(404).send();
+    }
+    res.send({ todo });
+  }).catch(e => {
+    res.status(400).send()
+  });
+
 });
 
 app.listen(3000, () => {
