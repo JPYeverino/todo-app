@@ -9,7 +9,7 @@ const app: express.Application = express();
 
 app.use(bodyParser.json());
 
-app.post('/todos', (req: express.Request, res: express.Response) => {
+app.post('/todos', (req, res) => {
   let todo = new Todo({
     text: req.body.text
   });
@@ -20,7 +20,7 @@ app.post('/todos', (req: express.Request, res: express.Response) => {
   });
 });
 
-app.get('/todos', (req: express.Request, res: express.Response) => {
+app.get('/todos', (req, res) => {
   Todo.find().then(todos => {
     res.send({ todos });
   }, e => {
@@ -33,7 +33,6 @@ app.listen(3000, () => {
 });
 
 export default app;
-
 
 
 
