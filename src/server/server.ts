@@ -1,6 +1,7 @@
+import * as _ from 'lodash';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { ObjectID } from 'mongodb';
+import { ObjectID, ObjectId } from 'mongodb';
 
 import './db/mongoose';
 import { User } from './models/user';
@@ -63,14 +64,31 @@ app.delete('/todos/:id', (req, res) => {
   });
 });
 
+app.patch('/todos/:id', (req, res) => {
+  let id = req.params.id;
+  let body = _.pick(req.body, ['text', 'completed','completedAt']);
+  
+  if(!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+  if(_.isBoolean(body.completed) && body.completed) {
+    body.completedAt = new Date().getTime();
+  } else {
+    body.completed = false;
+    body.completedAt = null;
+  }
+  Todo.findByIdAndUpdate(id, {$set:body}, {new:true})
+    .then(todo => {
+      if(!todo) {
+        return res.status(404).send();
+      }
+      res.send({todo});
+    })
+    .catch(e => res.status(404).send);
+});
+
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
 });
 
 export default app;
-
-
-
-
-
-

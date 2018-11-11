@@ -14,7 +14,7 @@ export let TodoSchema: Schema = new Schema({
     type: Boolean,
     default: false
   },
-  completadAt: {
+  completedAt: {
     type: Number,
     default: null
   }

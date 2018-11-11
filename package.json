@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-ts":"tsc",
+    "build-ts": "tsc",
     "postinstall": "npm run build-ts",
     "test": "jest --detectOpenHandles",
     "start": "npm run serve",
-    "serve":"node build/server/server.js"
+    "serve": "node build/server/server.js"
   },
   "jest": {
     "verbose": true,
@@ -25,7 +25,7 @@
     ]
   },
   "engines": {
-    "node":"8.11.4"
+    "node": "8.11.4"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +34,7 @@
     "@types/body-parser": "^1.17.0",
     "@types/express": "^4.16.0",
     "@types/jest": "^23.3.9",
+    "@types/lodash": "^4.14.118",
     "@types/mongodb": "^3.1.14",
     "@types/mongoose": "^5.3.1",
     "@types/node": "^10.12.2",
@@ -47,6 +48,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "lodash": "^4.17.5",
     "mongodb": "^3.0.2",
     "mongoose": "^5.0.6"
   }
