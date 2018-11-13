@@ -1,0 +1,6 @@
+{
+  "ignore": ["**/*.test.ts", "**/*.spect.ts", "node_modules"],
+  "whatch": ["src"],
+  "exec": "npm start",
+  "ext": "ts"
+}

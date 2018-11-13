@@ -6,9 +6,9 @@
   "scripts": {
     "build-ts": "tsc",
     "postinstall": "npm run build-ts",
-    "test": "jest --detectOpenHandles",
-    "start": "npm run serve",
-    "serve": "node build/server/server.js"
+    "test": "export NODE_ENV = test || SET \"NODE_ENV = test\" && jest",
+    "start": "ts-node src/server/server.ts",
+    "dev":"nodemon"
   },
   "jest": {
     "verbose": true,
@@ -40,6 +40,7 @@
     "@types/node": "^10.12.2",
     "@types/supertest": "^2.0.6",
     "jest": "^23.6.0",
+    "nodemon": "^1.18.6",
     "supertest": "^3.3.0",
     "ts-jest": "^23.10.4",
     "ts-node": "^7.0.1",
